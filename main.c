@@ -36,7 +36,7 @@ int main(int argc, char *argv[]) {
 		fscanf(fp, "%s %s %d %f", name, country, &runTime, &score);				//파일에서 영화정보를 입력받는다  
 		
 		mv_genMvInfo(name, score, runTime, country);							//영화 정보들을 만든다 
-		printf("%s %s %d %f\n", name, country, runTime, score); // ***시험용 
+//		printf("%s %s %d %f\n", name, country, runTime, score); // ***시험용 
 		
 		list_addTail(mvInfo, list);			//*******list 의 끝에 node를 추가한다. 
 	}
@@ -66,16 +66,19 @@ int main(int argc, char *argv[]) {
 				printf("printing all the movies in the list.....\n\n\n");
 				
 				ndPtr = list;
-				while (/* repeat until the ndPtr points to the end node */)
+				while (list_isEndNode(ndPtr)!=1 /* repeat until the ndPtr points to the end node */)
 				{
 					//2.2 print a movie data : use functions of movie.c and linkedList.c
-					mv_print()
 					//ndPtr = the next node of the ndPtr;
-					nd
+					ndPtr += 1;
 					//get object of ndPtr to mvInfo void pointer
+					mvInfo = ndPtr;
 					//print the contents of the mvInfo
+					mv_print(mvInfo);
+					 
 				}
-				
+				printf("\t- totally %d movies are listed!\n\n", list_len(ndPtr) );
+																//총 몇개인지 list_len 함수를 통해 출력
 				break;
 				
 			case 2: //print movies of specific country

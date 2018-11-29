@@ -10,22 +10,23 @@ typedef struct movInfo{	//name, score, runTime, madeIn 의 정보를 가지는 구조체 '
 	char madeIn[10];	//영화의 제작국가 
 } movInfo_t;			//구조체 'movInfo' 를 'movInfo_t' 를 통해 정의함 
 
+//movInfo_t movInfos[10];
 
 void* mv_genMvInfo(char* name, float score, int runTime, char* country)
 {
 	movInfo_t* mvPtr;
-	int i;
 //	mvPtr = movInfo;			//mvPtr 는 movInfo 구조체를 가리킴 
 	
+	if(mvPtr == NULL){
+		printf("[error]\n");
+	}
+	
 	//allocate memory and set the member variables
-	for(i=0;i<200;i++){
-	(mvPtr->name[i]) = name[i];		//movInfo 의 name에 main 함수에서 받아온 name을 할당함 
-	}
-	for(i=0;i<10;i++){
-	(mvPtr->madeIn[i]) = country[i];	//movInfo 의 madeIn에 main 함수에서 받아온 country를 할당함 
-	}
-	(mvPtr->runTime) = runTime;	//movInfo 의 runTime에 main 함수에서 받아온 runTime을 할당함 
-	(mvPtr->score) = score;		//movInfo 의 score에 main 함수에서 받아온 score을 할당함 
+
+	strcpy(mvPtr->name, name);		//movInfo 의 name에 main 함수에서 받아온 name을 할당함 
+	strcpy(mvPtr->madeIn, country);	//movInfo 의 madeIn에 main 함수에서 받아온 country를 할당함 
+	mvPtr->runTime = runTime;	//movInfo 의 runTime에 main 함수에서 받아온 runTime을 할당함 
+	mvPtr->score = score;		//movInfo 의 score에 main 함수에서 받아온 score을 할당함 
 	
 	return (void*)mvPtr;		//mvPtr 를 반환함 
 }
