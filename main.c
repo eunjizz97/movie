@@ -24,20 +24,21 @@ int main(int argc, char *argv[]) {
 	
 	//1. reading the movie.dat-----------------------------
 	//1.1 FILE open
-	fp = fopen("C:\\Code\\project2\\movie\\movie.dat", "r");	//파일을 읽기모드로 연다. 
+	fp = fopen("movie.dat", "r");	//파일을 읽기모드로 연다. 
 	
 	//1.2 list generation (use function list_genList() )
-	list = list_genList();										//영화 리스트를 만든다. 
+	list = list_genList();							//영화 리스트를 만든다. 
 	
 	//1.3 read each movie data from the file and add it to the linked list
-	while ((c=fgetc(fp) !=EOF /* read name, country, runtime and score*/ ))		//
+	while ((c=fgetc(fp)) !=EOF /* read name, country, runtime and score*/ )		//파일이 끝날 때까지 반복 
 	{	
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
-		fgets();
+		fscanf(fp, "%s %s %d %f", name, country, &runTime, &score);				//파일에서 영화정보를 입력받는다  
 		
-		mv_genMvInfo(name, score, runTime, country);			//영화 정보들을 만든다 
-		 
-		list_addTail(mvInfo, list);
+		mv_genMvInfo(name, score, runTime, country);							//영화 정보들을 만든다 
+		printf("%s %s %d %f\n", name, country, runTime, score); // ***시험용 
+		
+		list_addTail(mvInfo, list);			//*******list 의 끝에 node를 추가한다. 
 	}
 
 	//1.4 FILE close
@@ -68,7 +69,9 @@ int main(int argc, char *argv[]) {
 				while (/* repeat until the ndPtr points to the end node */)
 				{
 					//2.2 print a movie data : use functions of movie.c and linkedList.c
+					mv_print()
 					//ndPtr = the next node of the ndPtr;
+					nd
 					//get object of ndPtr to mvInfo void pointer
 					//print the contents of the mvInfo
 				}
