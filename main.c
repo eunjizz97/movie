@@ -67,17 +67,17 @@ int main(int argc, char *argv[]) {
 		printf("5. exit\n");
 		printf("----------------------------------------------------\n\n");
 		
-		printf("-- select an option : ");
+		printf("\t- select an option : ");
 		scanf("%d", &option);
 		
 		switch(option)
 		{
 			case 1: //print all the movies
 				printf("printing all the movies in the list.....\n\n\n");
+				printf("------------------------ list ----------------------\n");
 				
 				ndPtr = list;
 				while (list_isEndNode(ndPtr)==0 /* repeat until the ndPtr points to the end node */)
-//				for(i=0;i<10;i++)
 				{
 					//2.2 print a movie data : use functions of movie.c and linkedList.c
 					//ndPtr = the next node of the ndPtr;
@@ -89,15 +89,16 @@ int main(int argc, char *argv[]) {
 					printf("----------------------------------------------------\n");
 					 
 				}
-				printf("\t- totally %d movies are listed!\n\n", list_len(list) );
+				printf("\n\t- totally %d movies are listed!\n\n\n", list_len(list) );
 																//총 몇개인지 list_len 함수를 통해 출력
 				break;
 				
 			case 2: //print movies of specific country
 				//2.3.1 get country name to search for
 				cnt = 0;	//카운트 0으로 초기화 
-				printf("select a country : ");
+				printf("\t- select a country : ");
 				scanf("%s", inputCountry);
+				printf("------------------------ list ----------------------\n");
 				
 				ndPtr = list;
 					while (list_isEndNode(ndPtr)==0 /* repeat until the ndPtr points to the end node */)
@@ -108,7 +109,7 @@ int main(int argc, char *argv[]) {
 					//get object of ndPtr to mvInfo void pointer
 					mvInfo = list_getNdObj(ndPtr);
 					//if the input country matches to the country of the movie,
-					if(inputCountry == mv_getCountry(mvInfo))
+					if(strncmp(inputCountry, mv_getCountry(mvInfo), strlen(inputCountry)) == 0)
 					{
 					//then print the contents of the mvInfo
 						mv_print(mvInfo);
@@ -116,15 +117,16 @@ int main(int argc, char *argv[]) {
 						cnt++;
 					}
 				}
-				printf("\t - totally %d movies are listed!\n\n", cnt);
+				printf("\n\t - totally %d movies are listed!\n\n\n", cnt);
 				
 				break;
 				
 			case 3:
 				//2.4.1 get minimal runtime value to search for
 				cnt = 0;	//cnt 0으로 초기화  
-				printf("lowest runtime : ");
-				scanf("%d", inputRunTime);
+				printf("\t- lowest runtime : ");
+				scanf("%d", &inputRunTime);
+				printf("------------------------ list ----------------------\n");
 				
 				ndPtr = list;
 					while (list_isEndNode(ndPtr)==0 /* repeat until the ndPtr points to the end node */)
@@ -143,15 +145,16 @@ int main(int argc, char *argv[]) {
 						cnt++;
 					}
 				}
-				printf("\t - totally %d movies are listed!\n\n", cnt);
+				printf("\n\t - totally %d movies are listed!\n\n\n", cnt);
 				
 				break;
 				
 			case 4:
 				//2.5.1 get minimal score value to search for
-				printf("lowest score : ");
-				scanf("%f", inputScore);
 				cnt = 0;
+				printf("\t- lowest score : ");
+				scanf("%f", &inputScore);
+				printf("------------------------ list ----------------------\n");
 				
 				ndPtr = list;
 					while (list_isEndNode(ndPtr)==0 /* repeat until the ndPtr points to the end node */)
@@ -170,7 +173,7 @@ int main(int argc, char *argv[]) {
 						cnt++;
 					}
 				}
-				printf("\t - totally %d movies are listed!\n\n", cnt);
+				printf("\t - totally %d movies are listed!\n\n\n", cnt);
 				
 				break; 
 				
