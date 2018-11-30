@@ -15,7 +15,8 @@ typedef struct movInfo{	//name, score, runTime, madeIn 의 정보를 가지는 구조체 '
 void* mv_genMvInfo(char* name, float score, int runTime, char* country)
 {
 	movInfo_t* mvPtr;
-//	mvPtr = movInfo;			//mvPtr 는 movInfo 구조체를 가리킴 
+	
+	mvPtr = (movInfo_t*) malloc( sizeof (movInfo_t) );
 	
 	if(mvPtr == NULL){
 		printf("[error]\n");
