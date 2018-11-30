@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
 	int runTime; 			//영화 런타임 변수 
 	float score; 			//영화 평점 변수 
 	
-	char inputContry[10];	//사용자가 검색하려는 제작국가 
+	char inputCountry[10];	//사용자가 검색하려는 제작국가 
 	int inputRunTime;		//사용자가 검색하려는 최저 런타임 
 	float inputScore;		//사용자가 검색하려는 최저 평점  
 	
@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
 	fp = fopen("movie.dat", "r");	//파일을 읽기모드로 연다. 
 	
 	if(fp == NULL){
-		printf("[error] Failed to find a file (movie.dat)\n")
+		printf("[error] Failed to find a file (movie.dat)\n");
 	} 
 	
 	//1.2 list generation (use function list_genList() )
@@ -59,13 +59,13 @@ int main(int argc, char *argv[]) {
 	while(exit_flag == 0) 
 	{
 		//2.1 print menu message and get input option
-		printf("------------------------- Menu -------------------------\n");
+		printf("----------------------- Menu -----------------------\n");
 		printf("1. print all the movies\n");
 		printf("2. search for specific country movies\n");
 		printf("3. search for specific runtime movies\n");
 		printf("4. search for specific score movies\n");
 		printf("5. exit\n");
-		printf("--------------------------------------------------------\n\n");
+		printf("----------------------------------------------------\n\n");
 		
 		printf("-- select an option : ");
 		scanf("%d", &option);
